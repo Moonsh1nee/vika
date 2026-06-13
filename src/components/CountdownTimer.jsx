@@ -39,8 +39,8 @@ export default function CountdownTimer() {
   return (
     <section className="bg-white px-6 py-20 md:py-28">
       <p
-        className="mb-12 text-center font-sans font-bold uppercase text-charcoal md:mb-16"
-        style={{ fontSize: 'clamp(1.25rem, 3vw, 2rem)', letterSpacing: '0.06em' }}
+        className="mb-12 text-center font-sans font-light uppercase text-charcoal md:mb-16"
+        style={{ fontSize: 'clamp(1rem, 2.5vw, 1.5rem)', letterSpacing: '0.2em' }}
       >
         ДО НАШЕЙ СВАДЬБЫ ОСТАЛОСЬ
       </p>
@@ -61,13 +61,13 @@ export default function CountdownTimer() {
               <div key={label} className="flex flex-col items-center gap-2 md:gap-3">
                 <span
                   className="font-sans font-bold tabular-nums leading-none text-charcoal"
-                  style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)' }}
+                  style={{ fontSize: 'clamp(1.8rem, 5.5vw, 3.2rem)' }}
                 >
                   {label === 'Дней' ? value : pad(value)}
                 </span>
                 <span
-                  className="font-script text-charcoal"
-                  style={{ fontSize: 'clamp(1.25rem, 3vw, 2rem)' }}
+                  className="font-script text-charcoal/70"
+                  style={{ fontSize: 'clamp(1rem, 2.5vw, 1.6rem)' }}
                 >
                   {label}
                 </span>

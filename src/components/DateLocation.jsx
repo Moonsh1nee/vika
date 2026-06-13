@@ -1,11 +1,11 @@
 import { wedding } from '../data/wedding'
 import MediaPlaceholder from './MediaPlaceholder'
 
-function VenuePhoto({ src, alt, className = '' }) {
+function VenuePhoto({ src, alt }) {
   return src ? (
-    <img src={src} alt={alt} className={`h-full w-full object-cover ${className}`} />
+    <img src={src} alt={alt} className="h-full w-full object-cover" />
   ) : (
-    <MediaPlaceholder aspect="" label={alt} className={`h-full w-full rounded-none ${className}`} />
+    <MediaPlaceholder aspect="" label={alt} className="h-full w-full rounded-none" />
   )
 }
 
@@ -16,21 +16,24 @@ export default function DateLocation() {
   return (
     <section className="relative overflow-hidden bg-marble px-6 py-20 md:py-28">
       <div className="mx-auto max-w-5xl">
-        <div className="mb-14 text-center md:mb-16">
+
+        {/* Заголовок */}
+        <div className="mb-12 text-center md:mb-14">
           <p
-            className="font-script text-charcoal"
+            className="font-script text-script-light"
             style={{ fontSize: 'clamp(3.5rem, 8vw, 6rem)' }}
           >
-            {ceremony.place}
+            Локация
           </p>
           <h2
-            className="mt-4 font-sans font-bold uppercase text-charcoal"
-            style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.75rem)', letterSpacing: '0.2em' }}
+            className="mt-2 font-sans font-light uppercase text-charcoal/70"
+            style={{ fontSize: 'clamp(0.85rem, 2vw, 1.3rem)', letterSpacing: '0.28em' }}
           >
             НАША СВАДЬБА ПРОЙДЁТ В
           </h2>
         </div>
 
+        {/* Три фото */}
         <div className="grid grid-cols-3 items-end gap-0">
           <div className="aspect-3/4 overflow-hidden">
             <VenuePhoto src={photos[0]} alt="Площадка 1" />
@@ -47,22 +50,22 @@ export default function DateLocation() {
           </div>
         </div>
 
-        <div className="mt-12 text-center md:mt-14">
+        {/* Название и кнопка */}
+        <div className="mt-14 text-center md:mt-16">
           <h3
             className="font-sans font-bold uppercase text-charcoal"
             style={{ fontSize: 'clamp(1.25rem, 3vw, 2rem)', letterSpacing: '0.15em' }}
           >
             «{ceremony.place}»
           </h3>
-          <p className="mt-4 font-sans text-sm text-charcoal/70 md:text-base">
-            Адрес: {ceremony.address}
+          <p className="mt-4 font-sans text-sm text-charcoal/65 md:text-base">
+            {ceremony.address}
           </p>
-
           <a
             href={ceremony.mapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-block bg-charcoal px-10 py-3.5 font-sans text-sm text-white transition-colors hover:bg-charcoal/85"
+            className="mt-8 inline-block bg-charcoal px-12 py-3.5 font-sans text-sm uppercase tracking-widest text-white transition-colors hover:bg-charcoal/85"
           >
             Как добраться
           </a>

@@ -29,7 +29,7 @@ export default function MusicToggle() {
 
       <motion.button
         onClick={() => setPlaying((p) => !p)}
-        className="fixed bottom-6 right-6 z-[100] flex h-12 w-12 items-center justify-center rounded-full bg-charcoal/85 text-cream shadow-xl backdrop-blur-md"
+        className="fixed bottom-6 right-6 z-[100] flex h-12 w-12 items-center justify-center rounded-full bg-charcoal/85 text-white shadow-xl backdrop-blur-md"
         title={playing ? 'Выключить музыку' : 'Включить музыку'}
         initial={{ opacity: 0, scale: 0, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -42,7 +42,7 @@ export default function MusicToggle() {
             {BARS.map((i) => (
               <motion.span
                 key={i}
-                className="w-[3px] rounded-full bg-blush"
+                className="w-[3px] rounded-full bg-white"
                 animate={{ height: ['3px', '14px', '6px', '14px', '3px'] }}
                 transition={{
                   repeat: Infinity,

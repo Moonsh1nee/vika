@@ -46,23 +46,28 @@ export default function Schedule() {
   return (
     <section className="bg-white px-6 py-20 md:py-28">
       <div className="mx-auto max-w-3xl">
-        <h2 className="mb-16 text-center md:mb-24">
-          <span
-            className="font-sans font-bold uppercase text-charcoal"
-            style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)', letterSpacing: '0.08em' }}
+        <div className="relative mb-16 text-center md:mb-24">
+          <h2
+            className="font-sans font-light uppercase text-charcoal"
+            style={{ fontSize: 'clamp(2rem, 5.5vw, 4rem)', letterSpacing: '0.2em' }}
           >
-            ТАЙМИНГ{' '}
-          </span>
-          <span
+            ТАЙМИНГ
+          </h2>
+          <p
             className="font-script text-script-light"
-            style={{ fontSize: 'clamp(3rem, 8vw, 5.5rem)' }}
+            style={{
+              fontSize: 'clamp(3.5rem, 9vw, 7rem)',
+              marginTop: '-1.2rem',
+              marginLeft: 'clamp(2rem, 12vw, 6rem)',
+              lineHeight: 1,
+            }}
           >
-            Our
-          </span>
-        </h2>
+            Дня
+          </p>
+        </div>
 
         <div className="relative">
-          <div className="absolute top-0 bottom-0 left-[7.5rem] w-px bg-charcoal md:left-[9rem]" />
+          <div className="absolute top-0 bottom-0 left-34 w-px bg-charcoal md:left-44" />
 
           {wedding.schedule.map((item, i) => {
             const Icon = ICON_MAP[item.icon] ?? HeartPin
@@ -71,7 +76,7 @@ export default function Schedule() {
                 key={item.time}
                 className={`relative flex items-start gap-6 md:gap-10 ${i < wedding.schedule.length - 1 ? 'mb-20 md:mb-28' : ''}`}
               >
-                <div className="w-[7.5rem] shrink-0 text-right md:w-[9rem]">
+                <div className="w-30 shrink-0 pr-5 text-right md:w-36 md:pr-8">
                   <span
                     className="font-sans font-bold tabular-nums text-charcoal"
                     style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
@@ -80,7 +85,7 @@ export default function Schedule() {
                   </span>
                 </div>
 
-                <div className="flex-1 pt-1">
+                <div className="flex-1 pt-1 pl-2 md:pl-4">
                   <div className="flex items-center gap-3">
                     <Icon className="h-6 w-6 shrink-0 text-charcoal md:h-7 md:w-7" />
                     <p
