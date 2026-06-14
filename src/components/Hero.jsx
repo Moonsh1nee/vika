@@ -16,7 +16,7 @@ export default function Hero() {
           The Wedding Day
         </h1>
 
-        <div className="mx-auto my-6 h-px w-90 bg-charcoal/20 md:my-8" />
+        <div className="mx-auto my-6 h-px w-30 bg-charcoal/20 md:my-8 md:w-90" />
 
         <p
           className="font-script font-normal text-charcoal"

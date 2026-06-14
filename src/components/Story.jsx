@@ -1,7 +1,7 @@
 import { wedding } from "../data/wedding";
 import MediaPlaceholder from "./MediaPlaceholder";
 
-function Photo({ src, alt, position = "center" }) {
+function Photo({ src, alt, position = "center", className = "" }) {
   const objectPosition =
     position === "bottom" ? "object-bottom" : "object-center";
 
@@ -9,7 +9,7 @@ function Photo({ src, alt, position = "center" }) {
     <img
       src={src}
       alt={alt}
-      className={`h-full w-full object-cover ${objectPosition}`}
+      className={`h-full w-full ${objectPosition} ${className}`}
     />
   ) : (
     <MediaPlaceholder
@@ -47,7 +47,11 @@ export default function Story() {
         {/* Mobile / tablet */}
         <div className="mt-10 space-y-6 lg:hidden">
           <div className="mx-auto aspect-3/4 max-w-sm overflow-hidden">
-            <Photo src={photos[0]?.src} alt={photos[0]?.alt ?? "Фото 1"} />
+            <Photo
+              src={photos[0]?.src}
+              alt={photos[0]?.alt ?? "Фото 1"}
+              className="object-cover"
+            />
           </div>
 
           {/* Inscription mobile */}
@@ -73,11 +77,15 @@ export default function Story() {
               <Photo
                 src={photos[1]?.src}
                 alt={photos[1]?.alt ?? "Фото 2"}
-                position="bottom"
+                className="object-cover"
               />
             </div>
             <div className="aspect-[3/4] flex-1 overflow-hidden">
-              <Photo src={photos[2]?.src} alt={photos[2]?.alt ?? "Фото 3"} />
+              <Photo
+                src={photos[2]?.src}
+                alt={photos[2]?.alt ?? "Фото 3"}
+                className="object-cover"
+              />
             </div>
           </div>
         </div>
@@ -86,7 +94,11 @@ export default function Story() {
         <div className="mx-auto mt-10 hidden max-w-6xl items-start justify-center lg:flex xl:max-w-7xl">
           {/* Левое фото */}
           <div className="h-[78vh] min-h-[520px] w-[30%] shrink-0 overflow-hidden xl:w-[28%]">
-            <Photo src={photos[0]?.src} alt={photos[0]?.alt ?? "Фото 1"} />
+            <Photo
+              src={photos[0]?.src}
+              alt={photos[0]?.alt ?? "Фото 1"}
+              className="object-cover"
+            />
           </div>
 
           {/* Надпись по центру — только высота левого блока */}
@@ -109,6 +121,8 @@ export default function Story() {
             <p
               className="mt-4 font-script text-charcoal"
               style={{
+                writingMode: "vertical-rl",
+                textOrientation: "mixed",
                 fontSize: "clamp(1rem, 1.6vw, 1.4rem)",
                 whiteSpace: "nowrap",
               }}
@@ -118,16 +132,20 @@ export default function Story() {
           </div>
 
           {/* Правые фото */}
-          <div className="flex flex-1 flex-col gap-2">
+          <div className="flex flex-col gap-2">
             <div className="h-[50vh] min-h-[360px] shrink-0 overflow-hidden">
               <Photo
                 src={photos[1]?.src}
                 alt={photos[1]?.alt ?? "Фото 2"}
-                position="bottom"
+                className="object-contain"
               />
             </div>
             <div className="h-[68vh] min-h-[500px] shrink-0 overflow-hidden">
-              <Photo src={photos[2]?.src} alt={photos[2]?.alt ?? "Фото 3"} />
+              <Photo
+                src={photos[2]?.src}
+                alt={photos[2]?.alt ?? "Фото 3"}
+                className="object-contain"
+              />
             </div>
           </div>
         </div>

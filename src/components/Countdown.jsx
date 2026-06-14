@@ -87,13 +87,13 @@ export default function Countdown() {
           </h2>
         </div>
 
-        <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 md:flex-row md:items-center md:gap-10">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 xl:flex-row xl:items-center xl:gap-10">
           {/* Числа даты */}
-          <div className="flex shrink-0 flex-col items-center leading-none">
+          <div className="flex shrink-0 flex-row items-end gap-3 leading-none xl:flex-col xl:items-center xl:gap-0">
             {[wedding.date.day, monthNum, yearShort].map((val, i) => (
               <span
                 key={i}
-                className="block font-sans font-bold text-charcoal tabular-nums"
+                className="font-sans font-bold text-charcoal tabular-nums"
                 style={{ fontSize: 'clamp(3rem, 9vw, 5.5rem)', lineHeight: 0.92 }}
               >
                 {val}
@@ -102,7 +102,7 @@ export default function Countdown() {
           </div>
 
           {/* Календарь */}
-          <div className="w-full max-w-md flex-1 md:max-w-lg">
+          <div className="w-full max-w-md flex-1 px-3 xl:max-w-lg xl:px-0">
             <CalendarWidget weddingDate={weddingDate} />
           </div>
         </div>

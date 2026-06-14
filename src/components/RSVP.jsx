@@ -7,17 +7,19 @@ export default function RSVP() {
 
   const update = (field) => (e) => setForm({ ...form, [field]: e.target.value })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (wedding.rsvp.endpoint) {
-      fetch(wedding.rsvp.endpoint, {
+    const { botToken, chatId } = wedding.rsvp.telegram ?? {}
+    if (botToken && chatId && !botToken.startsWith('СЮДА')) {
+      const attending = form.attending === 'yes' ? '✅ Придёт' : '❌ Не сможет прийти'
+      const text = `🎊 <b>Новый ответ на приглашение</b>\n\n👤 <b>Имя:</b> ${form.name}\n${attending}`
+      await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      }).then(() => setSubmitted(true))
-    } else {
-      setSubmitted(true)
+        body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' }),
+      })
     }
+    setSubmitted(true)
   }
 
   const deadline = wedding.rsvp.deadline ?? ['01', '07', '26']
@@ -65,28 +67,25 @@ export default function RSVP() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-12 md:flex-row md:gap-16">
-          {/* Цифры дедлайна */}
-          <div className="relative shrink-0 md:w-44">
-            <div className="absolute top-0 bottom-0 left-5 w-px bg-charcoal/15 md:left-6" />
-            <div className="flex flex-col pl-12 leading-none md:pl-14">
-              {deadline.map((val, i) => (
-                <span
-                  key={i}
-                  className="font-sans font-bold tabular-nums text-charcoal"
-                  style={{ fontSize: 'clamp(2.5rem, 7vw, 4.5rem)', lineHeight: 0.95 }}
-                >
-                  {val}
-                </span>
-              ))}
-            </div>
-          </div>
-
+        <div className="mx-auto max-w-lg">
           {/* Форма */}
-          <form onSubmit={handleSubmit} className="flex-1 space-y-8 md:pt-2">
-            <p className="font-sans text-sm text-charcoal/60">
-              {wedding.rsvp.subtitle}
-            </p>
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div>
+              <p className="font-sans text-sm text-charcoal/60">
+                {wedding.rsvp.subtitle}
+              </p>
+              <div className="mt-3 flex items-end gap-3 leading-none">
+                {deadline.map((val, i) => (
+                  <span
+                    key={i}
+                    className="font-sans font-bold tabular-nums text-charcoal"
+                    style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', lineHeight: 0.95 }}
+                  >
+                    {val}
+                  </span>
+                ))}
+              </div>
+            </div>
 
             <div>
               <label className="mb-3 block font-sans text-xs uppercase tracking-widest text-charcoal/50">

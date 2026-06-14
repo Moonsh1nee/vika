@@ -97,8 +97,10 @@ export const wedding = {
     title: "Подтвердите присутствие",
     subtitle: "Пожалуйста, подтвердите ваше присутствие на нашей свадьбе до:",
     deadline: ["01", "07", "26"],
-    endpoint: null,
-    contactEmail: "wedding@example.com",
+    telegram: {
+      botToken: "8819060183:AAGLYC0WeXaavQFx9T9-YIN_YhxHKlQB9kY",
+      chatId: "775868015",
+    },
   },
 
   contacts: {
